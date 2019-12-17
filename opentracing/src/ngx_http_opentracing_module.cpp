@@ -38,7 +38,7 @@ using namespace ngx_opentracing;
 // https://github.com/opentracing/lua-bridge-tracer/issues/6
 //
 // As a solution, we use a plain pointer and never free and instead rely on the OS to clean up the
-// resources when the process exits. This is a pattern proposed on 
+// resources when the process exits. This is a pattern proposed on
 // https://google.github.io/styleguide/cppguide.html#Static_and_Global_Variables
 static const opentracing::DynamicTracingLibraryHandle*
     opentracing_library_handle;
@@ -52,7 +52,7 @@ const std::pair<ngx_str_t, ngx_str_t> default_opentracing_tags[] = {
     {ngx_string("peer.address"), ngx_string("$remote_addr:$remote_port")},
     {ngx_string("upstream.address"), ngx_string("$upstream_addr")},
     {ngx_string("http.method"), ngx_string("$request_method")},
-    {ngx_string("http.url"), ngx_string("$scheme://$http_host$request_uri")},
+    {ngx_string("http.url"), ngx_string("$scheme://$http_host$uri")},
     {ngx_string("http.host"), ngx_string("$http_host")}};
 
 // clang-format off
